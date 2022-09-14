@@ -7,10 +7,10 @@
 (ns app.emails
   "Main api for send emails."
   (:require
+   [app.common.data :as d]
    [app.common.logging :as l]
    [app.common.pprint :as pp]
    [app.common.spec :as us]
-   [app.common.data :as d]
    [app.config :as cf]
    [app.db :as db]
    [app.db.sql :as sql]
