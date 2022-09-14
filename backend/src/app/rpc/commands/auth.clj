@@ -308,9 +308,12 @@
           invitation (when-let [token (:invitation-token params)]
                        (tokens :verify {:token token :iss :team-invitation}))]
       (cond
-        ;; If invitation token comes in params, this is because the user comes from team-invitation process;
-        ;; in this case, regenerate token and send back to the user a new invitation token (and mark current
-        ;; session as logged). This happens only if the invitation email matches with the register email.
+        ;; If invitation token comes in params, this is because the
+        ;; user comes from team-invitation process; in this case,
+        ;; regenerate token and send back to the user a new invitation
+        ;; token (and mark current session as logged). This happens
+        ;; only if the invitation email matches with the register
+        ;; email.
         (and (some? invitation) (= (:email profile) (:member-email invitation)))
         (let [claims (assoc invitation :member-id  (:id profile))
               token  (tokens :generate claims)
